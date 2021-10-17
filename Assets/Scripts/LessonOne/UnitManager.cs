@@ -15,13 +15,18 @@ namespace AsyncUnityGB
 
         private int _damageValue = 10;
         private int _healingValue = 5;
-        private float _delayValue = 3.0f;
+        private float _delayValue;
+        private float _maxDelayValue = 3.0f;
         private float _coolDown = 0.5f;
+
+        private bool _buffed = false;
 
         private void Start()
         {
+            _delayValue = _maxDelayValue;
             _inputManager = new InputManager(this);
             _waitingFor = new WaitForSeconds(_coolDown);
+            OnUpdate += TimerChange;
         }
 
         private void Update()
@@ -46,25 +51,35 @@ namespace AsyncUnityGB
 
         public void RecieveHealing()
         {
-            StartCoroutine(Healing());
+            if (!_buffed)
+            {
+                StartCoroutine(Healing());
+            }
         }
 
-        IEnumerator Healing()
+        private void TimerChange()
         {
-            float time = _delayValue;
+            if (_buffed)
+            {                
+                _delayValue -= Time.deltaTime;
+            }
+        }
 
-            while (time > 0)
-            {
-                time -= Time.deltaTime;
+        private IEnumerator Healing()
+        {            
+            _buffed = true;
 
+            while (_delayValue > 0)
+            {        
                 if (!_currentUnit.CheckMaxHealth())
                 {
                     _currentUnit.ChangeHealth(_healingValue);
                     yield return _waitingFor;
                 }
-
-                Debug.Log($"{time}");
             }
+            
+            _buffed = false;
+            _delayValue = _maxDelayValue;
         }
     }
 }

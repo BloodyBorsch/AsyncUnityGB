@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace AsyncUnityGB
@@ -24,7 +23,7 @@ namespace AsyncUnityGB
         {
             if (_health > _maxHealth)
             {
-                _health = _maxHealth;
+                _health = _maxHealth;                
                 return true;
             }
             else

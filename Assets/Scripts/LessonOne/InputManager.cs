@@ -37,8 +37,6 @@ namespace AsyncUnityGB
         {
             RaycastHit hitInfo;
 
-            Debug.Log($"Нажатие");
-
             if (Physics.Raycast(ray, out hitInfo))
             {
                 var selected = hitInfo.collider.GetComponent<Unit>();                

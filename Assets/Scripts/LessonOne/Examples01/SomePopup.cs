@@ -1,0 +1,50 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Threading;
+using System.Threading.Tasks;
+
+
+public delegate void CloseHandler(bool accepted);
+
+public class SomePopup : MonoBehaviour
+{
+    [SerializeField] 
+    Button buttonAccept;
+    [SerializeField] 
+    Button buttonCancel;
+
+    public event CloseHandler OnClose;
+
+    public async void ActivatePopup(CancellationToken ct)
+    {
+        using (CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(ct))
+        {
+            CancellationToken linkedCt = linkedCts.Token;
+            Task<bool> task1 = PressButtonAsync(linkedCt, buttonAccept);
+            Task<bool> task2 = PressButtonAsync(linkedCt, buttonCancel);
+            Task<bool> finishedTask = await Task.WhenAny(task1, task2);
+            bool result = (finishedTask == task1 && finishedTask.Result);
+            
+            OnClose?.Invoke(result);
+        }
+    }
+
+    async Task<bool> PressButtonAsync(CancellationToken ct, Button button)
+    {
+        bool isPressed = false;
+        button.onClick.AddListener(() => isPressed = true);
+
+        while (isPressed == false)
+        {
+            if (ct.IsCancellationRequested)
+            {
+                return false;
+            }
+
+            await Task.Yield();
+        }
+
+        return true;
+    }
+
+}

@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 1469767123}
   - component: {fileID: 1469767122}
   - component: {fileID: 1469767121}
+  - component: {fileID: 1469767120}
   m_Layer: 0
   m_Name: TestUnit
   m_TagString: Untagged
@@ -337,6 +338,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1469767120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469767119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683ba9ce1091d9e42b582e36a7692547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1469767121
 BoxCollider:
   m_ObjectHideFlags: 0

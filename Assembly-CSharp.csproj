@@ -62,6 +62,8 @@
     <Compile Include="Assets\Scripts\LessonTwo\Examples02\Galaxy.cs" />
     <Compile Include="Assets\Scripts\LessonTwo\Examples02\GravitationJob.cs" />
     <Compile Include="Assets\Scripts\LessonTwo\Examples02\MoveJob.cs" />
+    <Compile Include="Assets\Scripts\LessonTwo\RecalculateJob.cs" />
+    <Compile Include="Assets\Scripts\LessonTwo\ObjectiveOneObject.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/UnityEditors/2020.3.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

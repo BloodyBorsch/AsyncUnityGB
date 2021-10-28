@@ -4,15 +4,18 @@ using Unity.Jobs;
 
 namespace LessonTwo
 {
-    public struct RecalculateJob : IJobParallelFor
+    public struct RecalculateJob : IJob
     {        
         public NativeArray<int> RecalculateNumbers;
 
-        public void Execute(int index)
+        public void Execute()
         {
-            if (RecalculateNumbers[index] > 10)
+            for (int i = 0; i < RecalculateNumbers.Length; i++)
             {
-                RecalculateNumbers[index] = 0;                
+                if (RecalculateNumbers[i] > 10)
+                {
+                    RecalculateNumbers[i] = 0;
+                }
             }
         }
     }

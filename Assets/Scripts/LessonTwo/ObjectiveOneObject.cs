@@ -9,8 +9,6 @@ namespace LessonTwo
     {
         private int _numbersCount = 100;
 
-        private bool _isDone;        
-
         private NativeArray<int> _numbersArray;        
 
         private JobHandle jobHandler;        
@@ -18,15 +16,13 @@ namespace LessonTwo
 
         private void Start()
         {
-            _isDone = false;
-
             _numbersArray = new NativeArray<int>(_numbersCount, Allocator.Persistent);         
             _recalculatedJob = new RecalculateJob();
 
             if (Calculation())
             {
                 _recalculatedJob.RecalculateNumbers = _numbersArray;
-                jobHandler = _recalculatedJob.Schedule(_numbersCount, 5);
+                jobHandler = _recalculatedJob.Schedule();
                 jobHandler.Complete();
                 if (jobHandler.IsCompleted) ShowResult(_recalculatedJob.RecalculateNumbers);
             }
@@ -76,7 +72,7 @@ namespace LessonTwo
                 }
             }
 
-            Debug.Log($"После пересчета нулевых значений - {counter}");
+            Debug.Log($"После пересчета нулевых значений стало - {counter}");
         }
 
         private void OnDestroy()

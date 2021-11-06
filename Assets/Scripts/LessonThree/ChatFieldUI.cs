@@ -9,13 +9,16 @@ namespace LessonThree
 {
     public class ChatFieldUI : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI _textObject;
-        [SerializeField] Scrollbar _scrollbar;
+        private TextMeshProUGUI _textObject;
+        private Scrollbar _scrollbar;
 
-        private List<string> _messages = new List<string>();
+        private List<string> _messages;
 
         public void Initialize()
         {
+            _textObject = GetComponentInChildren<TextMeshProUGUI>();
+            _scrollbar = GetComponentInChildren<Scrollbar>();
+            _messages = new List<string>();
             _scrollbar.onValueChanged.AddListener((float value) => UpdateText());
             _textObject.text = "";
         }

@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 namespace LessonThree
 {
-    public class Client : MonoBehaviour
+    public sealed class Client : MonoBehaviour, INetworkUser
     {
         public delegate void OnMessageRecieve(string message);
         public event OnMessageRecieve OnRecieveMSG;
@@ -49,6 +49,7 @@ namespace LessonThree
 
                     case NetworkEventType.ConnectEvent:
                         OnRecieveMSG?.Invoke($"You have been connected to server");
+                        Debug.Log($"Server {recHostId}");
                         break;
 
                     case NetworkEventType.DataEvent:
@@ -75,7 +76,12 @@ namespace LessonThree
             }
         }
 
-        public void SendMessage(string message)
+        public void GetName(string name)
+        {
+            SendMessageToAll(name);
+        }
+
+        public void SendMessageToAll(string message)
         {
             byte[] buffer = Encoding.Unicode.GetBytes(message);
             NetworkTransport.Send(_hostID, _connectionID, _reliableChannel,
@@ -83,7 +89,7 @@ namespace LessonThree
             if ((NetworkError)_error != NetworkError.Ok) Debug.Log((NetworkError)_error);
         }
 
-        public void Connect(int serverId)
+        public void Connect()
         {
             NetworkTransport.Init();
             ConnectionConfig cc = new ConnectionConfig();
@@ -102,7 +108,6 @@ namespace LessonThree
             if (!_isConnected) return;
 
             NetworkTransport.Disconnect(_hostID, _connectionID, out _error);
-            //_isConnected = false;
         }
     }
 }

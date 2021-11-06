@@ -7,10 +7,13 @@ using System.Text;
 
 namespace LessonThree
 {
-    public class Server : MonoBehaviour
+    public sealed class Server : MonoBehaviour, INetworkUser
     {
+        public delegate void OnMessageRecieve(string message);
+        public event OnMessageRecieve OnRecieveMSG;
+
         private const string START_SERVER_MESSAGE = "---Server Online---";
-        private const string SHUTDOWN_SERVER_MESSAGE = "---Server Offline---";
+        private const string SHUTDOWN_SERVER_MESSAGE = "---Server Offline---";        
 
         private const int MAX_CONNECTIONS = 10;
         private int _port = 5805;
@@ -20,7 +23,8 @@ namespace LessonThree
         private bool _isStarted = false;
         private byte _error;
 
-        List<int> _connectionIDs;        
+        List<int> _connectionIDs;
+        Dictionary<int, string> _users;
 
         private void Update()
         {
@@ -50,16 +54,32 @@ namespace LessonThree
 
                     case NetworkEventType.ConnectEvent:
                         _connectionIDs.Add(connectionId);
-                        SendMessageToAll($"Player {connectionId} has connected.");
+                        Debug.Log($"Player {connectionId} has connected.");
                         break;
 
                     case NetworkEventType.DataEvent:
                         string message = Encoding.Unicode.GetString(recBuffer, 0, dataSize);
-                        SendMessageToAll($"Player {connectionId}: {message}");
+
+                        string playerName;
+
+                        if (_users.TryGetValue(connectionId, out playerName))
+                        {
+                            SendMessageToAll($"{playerName}: {message}");
+                        }
+                        else
+                        {
+                            _users.Add(connectionId, message);
+                            SendMessageToAll($"Player {message} has connected.");
+                        }                        
                         break;
 
-                    case NetworkEventType.DisconnectEvent:                        
-                        SendMessageToAll($"Player {connectionId} has disconnected");
+                    case NetworkEventType.DisconnectEvent:   
+                        string disconnectedPlayer;            
+                        
+                        _users.TryGetValue(connectionId, out disconnectedPlayer);
+                        SendMessageToAll($"Player {disconnectedPlayer} has disconnected");
+                        Debug.Log($"Player {disconnectedPlayer} with id {connectionId} has disconnected.");
+                        _users.Remove(connectionId);
                         _connectionIDs.Remove(connectionId);
                         break;
 
@@ -79,6 +99,9 @@ namespace LessonThree
 
         public void StartServer()
         {
+            _connectionIDs = new List<int>();
+            _users = new Dictionary<int, string>();
+
             NetworkTransport.Init();
             ConnectionConfig cc = new ConnectionConfig();
             _reliableChannel = cc.AddChannel(QosType.Reliable);
@@ -93,6 +116,8 @@ namespace LessonThree
         {
             if (!_isStarted) return;
 
+            _connectionIDs.Clear();
+            _users.Clear();
             NetworkTransport.RemoveHost(_hostID);
             NetworkTransport.Shutdown();
 
@@ -111,15 +136,18 @@ namespace LessonThree
 
         public void SendMessageToAll(string message)
         {
-            for (int i = 0; i < _connectionIDs.Count; i++)
+            if (_connectionIDs.Count != 0)
             {
-                SendMessage(message, _connectionIDs[i]);
+                foreach (var connectionid in _connectionIDs)
+                {
+                    SendMessage(message, connectionid);
+                    OnRecieveMSG?.Invoke(message);
+                }
             }
-        }
-
-        public int GetHostID()
-        {
-            return _hostID;
+            else
+            {
+                Debug.Log($"No Clients =(");
+            }
         }
     }
 }

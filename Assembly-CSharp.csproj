@@ -52,6 +52,8 @@
     <Compile Include="Assets\Scripts\LessonOne\Examples01\CoroutineExample.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\CustomYieldInstruction.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\Item.cs" />
+    <Compile Include="Assets\Scripts\LessonThree\INetworkUser.cs" />
+    <Compile Include="Assets\Scripts\LessonThree\PopUpMenu.cs" />
     <Compile Include="Assets\Scripts\LessonThree\UIController.cs" />
     <Compile Include="Assets\Scripts\LessonThree\Server.cs" />
     <Compile Include="Assets\Scripts\LessonThree\ChatFieldUI.cs" />

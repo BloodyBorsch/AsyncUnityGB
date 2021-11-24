@@ -4,101 +4,107 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public abstract class FireAction : MonoBehaviour
+
+namespace LessonFour
 {
-    [SerializeField]
-    private GameObject bulletPrefab;
-    [SerializeField]
-    private int startAmmunition = 20;
-
-    protected string countBullet = string.Empty;
-    protected Queue<GameObject> bullets = new Queue<GameObject>();
-    protected Queue<GameObject> ammunition = new Queue<GameObject>();
-    protected bool reloading = false;
-
-    protected virtual void Start()
+    public abstract class FireAction : MonoBehaviour
     {
-        for (var i = 0; i < startAmmunition; i++)
+        [SerializeField]
+        private GameObject bulletPrefab;
+        [SerializeField]
+        private int startAmmunition = 20;
+
+        protected string countBullet = string.Empty;
+        protected Queue<GameObject> bullets = new Queue<GameObject>();
+        protected Queue<GameObject> ammunition = new Queue<GameObject>();
+        protected bool reloading = false;
+
+        protected virtual void Start()
         {
-            GameObject bullet;
-            if(bulletPrefab == null)
+            for (var i = 0; i < startAmmunition; i++)
             {
-                bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                bullet.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                GameObject bullet;
+
+                if (bulletPrefab == null)
+                {
+                    bullet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    bullet.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                }
+                else
+                {
+                    bullet = Instantiate(bulletPrefab);
+                }
+
+                bullet.SetActive(false);
+                ammunition.Enqueue(bullet);
+            }
+        }
+
+        public virtual async void Reloading()
+        {
+            bullets = await Reload();
+        }
+
+        protected virtual void Shooting()
+        {
+            if (bullets.Count == 0)
+            {
+                Reloading();
+            }
+        }
+
+        private async Task<Queue<GameObject>> Reload()
+        {
+            if (!reloading)
+            {
+                reloading = true;
+                StartCoroutine(ReloadingAnim());
+                return await Task.Run(delegate
+                {
+                    var cage = 10;
+                    if (bullets.Count < cage)
+                    {
+                        Thread.Sleep(3000);
+                        var bullets = this.bullets;
+                        while (bullets.Count > 0)
+                        {
+                            ammunition.Enqueue(bullets.Dequeue());
+                        }
+                        cage = Mathf.Min(cage, ammunition.Count);
+                        if (cage > 0)
+                        {
+                            for (var i = 0; i < cage; i++)
+                            {
+                                var sphere = ammunition.Dequeue();
+                                bullets.Enqueue(sphere);
+                            }
+                        }
+                    }
+                    reloading = false;
+                    return bullets;
+                });
             }
             else
             {
-                bullet = Instantiate(bulletPrefab);
-            }
-            bullet.SetActive(false);
-            ammunition.Enqueue(bullet);
-        }
-    }
-
-    public virtual async void Reloading()
-    {
-        bullets = await Reload();
-    }
-
-    protected virtual void Shooting()
-    {
-        if (bullets.Count == 0)
-        {
-            Reloading();
-        }
-    }
-
-    private async Task<Queue<GameObject>> Reload()
-    {
-        if (!reloading)
-        {
-            reloading = true;
-            StartCoroutine(ReloadingAnim());
-            return await Task.Run(delegate
-            {
-                var cage = 10;
-                if (bullets.Count < cage)
-                {
-                    Thread.Sleep(3000);
-                    var bullets = this.bullets;
-                    while (bullets.Count > 0)
-                    {
-                        ammunition.Enqueue(bullets.Dequeue());
-                    }
-                    cage = Mathf.Min(cage, ammunition.Count);
-                    if (cage > 0)
-                    {
-                        for (var i = 0; i < cage; i++)
-                        {
-                            var sphere = ammunition.Dequeue();
-                            bullets.Enqueue(sphere);
-                        }
-                    }
-                }
-                reloading = false;
                 return bullets;
-            });
+            }
         }
-        else
-        {
-            return bullets;
-        }
-    }
 
-    private IEnumerator ReloadingAnim()
-    {
-        while (reloading)
+        private IEnumerator ReloadingAnim()
         {
-            RayShooter.BulletCount = " | ";
-            yield return new WaitForSeconds(0.01f);
-            RayShooter.BulletCount = @" \ ";
-            yield return new WaitForSeconds(0.01f);
-            RayShooter.BulletCount = "---";
-            yield return new WaitForSeconds(0.01f);
-            RayShooter.BulletCount = " / ";
-            yield return new WaitForSeconds(0.01f);
+            while (reloading)
+            {
+                RayShooter.BulletCount = " | ";
+                yield return new WaitForSeconds(0.01f);
+                RayShooter.BulletCount = @" \ ";
+                yield return new WaitForSeconds(0.01f);
+                RayShooter.BulletCount = "---";
+                yield return new WaitForSeconds(0.01f);
+                RayShooter.BulletCount = " / ";
+                yield return new WaitForSeconds(0.01f);
+            }
+            RayShooter.BulletCount = bullets.Count.ToString();
+            yield return null;
         }
-        RayShooter.BulletCount = bullets.Count.ToString();
-        yield return null;
     }
 }

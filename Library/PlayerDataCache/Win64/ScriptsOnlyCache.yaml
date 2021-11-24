@@ -1,37 +1,29 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - LessonThree.ChatFieldUI
-    - LessonThree.Client
-    - LessonThree.PopUpMenu
-    - LessonThree.Server
-    - LessonThree.UIController
+    - LessonFour.GameManager
+    - LessonFour.MouseLook
+    - LessonFour.Player
+    - LessonFour.PlayerCharacter
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
-    - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
-    - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-    UnityEngine.UI.dll:
-    - UnityEngine.EventSystems.EventSystem
-    - UnityEngine.EventSystems.StandaloneInputModule
-    - UnityEngine.UI.Button
-    - UnityEngine.UI.CanvasScaler
-    - UnityEngine.UI.GraphicRaycaster
-    - UnityEngine.UI.GridLayoutGroup
-    - UnityEngine.UI.Image
-    - UnityEngine.UI.LayoutElement
-    - UnityEngine.UI.RectMask2D
-    - UnityEngine.UI.Scrollbar
+    com.unity.multiplayer-hlapi.Runtime.dll:
+    - UnityEngine.Networking.NetworkCallbacks
+    - UnityEngine.Networking.NetworkIdentity
+    - UnityEngine.Networking.NetworkManager
+    - UnityEngine.Networking.NetworkManagerHUD
+    - UnityEngine.Networking.NetworkStartPosition
   sceneClasses:
-    Assets/Scenes/LessonThree/LessonThree.unity:
+    Assets/Scenes/LessonFour/MainScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -40,11 +32,19 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
     - Class: 49
+      Script: {instanceID: 0}
+    - Class: 65
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -55,62 +55,79 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1462}
+      Script: {instanceID: 1472}
     - Class: 114
-      Script: {instanceID: 1608}
+      Script: {instanceID: 1474}
     - Class: 114
-      Script: {instanceID: 1654}
+      Script: {instanceID: 1752}
     - Class: 114
-      Script: {instanceID: 1734}
+      Script: {instanceID: 2040}
     - Class: 114
-      Script: {instanceID: 1846}
+      Script: {instanceID: 2760}
     - Class: 114
-      Script: {instanceID: 2098}
+      Script: {instanceID: 3452}
     - Class: 114
-      Script: {instanceID: 2392}
+      Script: {instanceID: 3498}
     - Class: 114
-      Script: {instanceID: 2492}
+      Script: {instanceID: 3686}
     - Class: 114
-      Script: {instanceID: 2532}
+      Script: {instanceID: 3910}
     - Class: 114
-      Script: {instanceID: 2546}
+      Script: {instanceID: 4166}
     - Class: 114
-      Script: {instanceID: 2642}
+      Script: {instanceID: 4282}
     - Class: 114
-      Script: {instanceID: 2664}
-    - Class: 114
-      Script: {instanceID: 2730}
-    - Class: 114
-      Script: {instanceID: 2826}
-    - Class: 114
-      Script: {instanceID: 2834}
-    - Class: 114
-      Script: {instanceID: 2904}
-    - Class: 114
-      Script: {instanceID: 3774}
-    - Class: 114
-      Script: {instanceID: 3792}
-    - Class: 114
-      Script: {instanceID: 4036}
-    - Class: 114
-      Script: {instanceID: 4326}
-    - Class: 114
-      Script: {instanceID: 4362}
+      Script: {instanceID: 16620}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 136
+      Script: {instanceID: 0}
+    - Class: 143
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
-    - Class: 213
+    - Class: 850595691
       Script: {instanceID: 0}
-    - Class: 222
+    Assets/Scenes/LessonFour/Online.unity:
+    - Class: 1
       Script: {instanceID: 0}
-    - Class: 223
+    - Class: 4
       Script: {instanceID: 0}
-    - Class: 224
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 3686}
+    - Class: 114
+      Script: {instanceID: 16620}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -119,6 +136,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: eafb77726b67b7571818a7210a3ce11e
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkIdentity
+  - hash:
+      serializedVersion: 2
+      Hash: 21e871d89bbce53c038fc75ad1b7c7f3
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -187,10 +216,22 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 265cf27ba050d55ff33a8acab4ded6c0
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkLobbyManager
+  - hash:
+      serializedVersion: 2
       Hash: 300fd99066f8c288e85f5e81ce65fe34
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 15d6076f1692188e19c9505f0db0f380
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LessonFour
+    className: RayShooter
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -229,10 +270,28 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
+      Hash: e6ae40841db498b6e673877ac45ad208
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 9b895dcabbc1faf095c000c32d471fd0
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkTransformChild
+  - hash:
+      serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkBehaviour
   - hash:
       serializedVersion: 2
       Hash: 8b67518c863bc5843575747d74522541
@@ -337,6 +396,12 @@ ScriptsOnlyBuild:
     className: ChatFieldUI
   - hash:
       serializedVersion: 2
+      Hash: 9cf9951726e51e92037346b717e0cdba
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LessonFour
+    className: PlayerCharacter
+  - hash:
+      serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -373,6 +438,12 @@ ScriptsOnlyBuild:
     className: ToggleGroup
   - hash:
       serializedVersion: 2
+      Hash: 318c6c13a19c9fac98135ae14889de1b
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkMigrationManager
+  - hash:
+      serializedVersion: 2
       Hash: 69415240821be7986b27e72bf9609a30
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -383,6 +454,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: ad9173d3a69d99153f38ed4b62226129
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkTransform
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -463,6 +540,12 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: e0ee4b3d4e27318934cc940a969d3d96
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkManagerHUD
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -473,6 +556,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: EventTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: 1a437a1d7e66deaaaed2f63255a5485f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LessonFour
+    className: MouseLook
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -499,6 +588,12 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 3f0b469d844365c00a63de0437c9b29e
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkProximityChecker
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: LessonTwo
@@ -509,6 +604,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkStartPosition
   - hash:
       serializedVersion: 2
       Hash: 7275016e5d3a992aac552fe63b5c1c24
@@ -545,6 +646,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 1dcb82730d983b77cec736c6ef19f814
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkDiscovery
+  - hash:
+      serializedVersion: 2
+      Hash: 5bd9a19c7b5f76c563418e28f48a561b
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkLobbyPlayer
   - hash:
       serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
@@ -601,10 +714,28 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 5887ef1bc706b22b773d253fd443ceef
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkTransformVisualizer
+  - hash:
+      serializedVersion: 2
+      Hash: d1f07c9e64b7817e6271f80bb03de25f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LessonFour
+    className: Player
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: AsyncUnityGB
     className: ObjTwoLessonOne
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkCallbacks
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
@@ -637,95 +768,12 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 5887ef1bc706b22b773d253fd443ceef
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkTransformVisualizer
-  - hash:
-      serializedVersion: 2
-      Hash: e6ae40841db498b6e673877ac45ad208
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkAnimator
-  - hash:
-      serializedVersion: 2
-      Hash: ad9173d3a69d99153f38ed4b62226129
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkTransform
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkCallbacks
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: 1dcb82730d983b77cec736c6ef19f814
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkDiscovery
-  - hash:
-      serializedVersion: 2
-      Hash: 5bd9a19c7b5f76c563418e28f48a561b
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkLobbyPlayer
-  - hash:
-      serializedVersion: 2
-      Hash: e0ee4b3d4e27318934cc940a969d3d96
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkManagerHUD
-  - hash:
-      serializedVersion: 2
-      Hash: 9b895dcabbc1faf095c000c32d471fd0
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkTransformChild
-  - hash:
-      serializedVersion: 2
-      Hash: 265cf27ba050d55ff33a8acab4ded6c0
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkLobbyManager
-  - hash:
-      serializedVersion: 2
-      Hash: 318c6c13a19c9fac98135ae14889de1b
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkMigrationManager
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkStartPosition
-  - hash:
-      serializedVersion: 2
-      Hash: eafb77726b67b7571818a7210a3ce11e
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkIdentity
-  - hash:
-      serializedVersion: 2
-      Hash: 21e871d89bbce53c038fc75ad1b7c7f3
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkManager
-  - hash:
-      serializedVersion: 2
-      Hash: 3f0b469d844365c00a63de0437c9b29e
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkProximityChecker
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: LessonFour
+    className: GameManager
   platform: 19
   scenePathNames:
-  - Assets/Scenes/LessonThree/LessonThree.unity
-  playerPath: "C:/\u0412\u0440\u0435\u043C\u0435\u043D\u043D\u0430\u044F/UnityTestBuild/Lesson1.exe"
+  - Assets/Scenes/LessonFour/MainScene.unity
+  - Assets/Scenes/LessonFour/Online.unity
+  playerPath: "C:/\u0412\u0440\u0435\u043C\u0435\u043D\u043D\u0430\u044F/UnityBuild/Lesson1.exe"

@@ -2,34 +2,34 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(CharacterController))]
-public abstract class Character : NetworkBehaviour 
+
+namespace LessonFour
 {
-    protected Action OnUpdateAction { get; set; }
-    protected abstract FireAction fireAction { get; set; }
- 
-    [SyncVar] protected Vector3 serverPosition;
-
-    protected virtual void Initiate()
+    [RequireComponent(typeof(CharacterController))]
+    public abstract class Character : NetworkBehaviour
     {
-        OnUpdateAction += Movement;
-    }
+        protected abstract FireAction fireAction { get; set; }
 
-    private void Update()
-    {
-        OnUpdate();
-    }
+        [SyncVar] protected Vector3 _serverPosition;
+        [SyncVar] protected Quaternion _serverRotation;
 
-    private void OnUpdate()
-    {
-        OnUpdateAction?.Invoke();
-    }
+        protected virtual void Start()
+        {
+            GameManager.SubscribeOnUpdate(Movement);
+        }
 
-    [Command]
-    protected void CmdUpdatePosition(Vector3 position)
-    {
-        serverPosition = position;
-    }
+        public abstract void Movement();
 
-    public abstract void Movement();
+        [Command]
+        protected void CmdUpdateTransform(Vector3 position, Quaternion rotation)
+        {
+            _serverPosition = position;
+            _serverRotation = rotation;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.UnSubscribeOnUpdate(Movement);
+        }
+    }
 }

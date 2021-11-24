@@ -1,82 +1,90 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-[RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(MouseLook))]
-public class PlayerCharacter : Character
+
+namespace LessonFour
 {
-    [Range(0, 100)] [SerializeField] private int health = 100;
-
-    [Range(0.5f, 10.0f)] [SerializeField] private float movingSpeed = 8.0f;
-    [SerializeField] private float acceleration = 3.0f;
-    private const float gravity = -9.8f;
-    private CharacterController characterController;
-    private MouseLook mouseLook;
-
-    private Vector3 currentVelocity;
-
-    protected override FireAction fireAction { get; set; }
-
-    protected override void Initiate()
+    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(MouseLook))]
+    public class PlayerCharacter : Character
     {
-        base.Initiate();
-        fireAction = gameObject.AddComponent<RayShooter>();
-        fireAction.Reloading();
-        characterController = GetComponent<CharacterController>();
-        mouseLook = GetComponent<MouseLook>();
-    }
+        [Range(0, 100)] [SerializeField] private int health = 100;
 
-    public override void Movement()
-    {
-        if (mouseLook != null && mouseLook.PlayerCamera != null)
+        [Range(0.5f, 10.0f)] [SerializeField] private float movingSpeed = 8.0f;
+        [SerializeField] private float acceleration = 3.0f;
+        private const float gravity = -9.8f;
+        private CharacterController characterController;
+        private MouseLook mouseLook;
+
+        private Vector3 currentVelocity;
+
+        protected override FireAction fireAction { get; set; }
+
+        protected override void Start()
         {
-            mouseLook.PlayerCamera.enabled = hasAuthority;
+            base.Start();
+            Init();
         }
 
-        if (hasAuthority)
+        public override void Movement()
         {
-            var moveX = Input.GetAxis("Horizontal") * movingSpeed;
-            var moveZ = Input.GetAxis("Vertical") * movingSpeed;
-            var movement = new Vector3(moveX, 0, moveZ);
-            movement = Vector3.ClampMagnitude(movement, movingSpeed);
-            movement *= Time.deltaTime;
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (mouseLook != null && mouseLook.PlayerCamera != null)
             {
-                movement *= acceleration;
+                mouseLook.PlayerCamera.enabled = hasAuthority;
             }
 
-            movement.y = gravity;
-            movement = transform.TransformDirection(movement);
+            if (hasAuthority)            
+            {
+                var moveX = Input.GetAxis("Horizontal") * movingSpeed;
+                var moveZ = Input.GetAxis("Vertical") * movingSpeed;
+                var movement = new Vector3(moveX, 0, moveZ);
+                movement = Vector3.ClampMagnitude(movement, movingSpeed);
+                movement *= Time.deltaTime;
 
-            characterController.Move(movement);
-            mouseLook.Rotation();
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    movement *= acceleration;
+                }
 
-            CmdUpdatePosition(transform.position);
+                movement.y = gravity;
+                movement = transform.TransformDirection(movement);
+
+                characterController.Move(movement);
+                mouseLook.Rotation();
+
+                CmdUpdateTransform(transform.position, transform.rotation);             
+            }
+            else
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, _serverPosition, ref currentVelocity, movingSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, _serverRotation, movingSpeed * Time.deltaTime);
+            }
         }
-        else
+
+        private void Init()
+        {            
+            fireAction = gameObject.AddComponent<RayShooter>();
+            fireAction.Reloading();
+            characterController = GetComponent<CharacterController>();
+            mouseLook = GetComponent<MouseLook>();
+        }               
+
+        private void OnGUI()
         {
-            transform.position = Vector3.SmoothDamp(transform.position, serverPosition, ref currentVelocity, movingSpeed * Time.deltaTime);
-        }
-    }
+            if (Camera.main == null)
+            {
+                return;
+            }
 
-    private void Start()
-    {
-       Initiate();
-    }
-    private void OnGUI()
-    {
-        if (Camera.main == null)
-        {
-            return;
+            var info = $"Health: {health}\nClip: {RayShooter.BulletCount}";
+            var size = 12;
+            var bulletCountSize = 50;
+            var posX = Camera.main.pixelWidth / 2 - size / 4;
+            var posY = Camera.main.pixelHeight / 2 - size / 2;
+            var posXBul = Camera.main.pixelWidth - bulletCountSize * 2;
+            var posYBul = Camera.main.pixelHeight - bulletCountSize;
+            GUI.Label(new Rect(posX, posY, size, size), "+");
+            GUI.Label(new Rect(posXBul, posYBul, bulletCountSize * 2, bulletCountSize * 2), info);
         }
-
-        var info = $"Health: {health}\nClip: {RayShooter.BulletCount}";
-        var size = 12;
-        var bulletCountSize = 50;
-        var posX = Camera.main.pixelWidth / 2 - size / 4;
-        var posY = Camera.main.pixelHeight / 2 - size / 2;
-        var posXBul = Camera.main.pixelWidth - bulletCountSize * 2;
-        var posYBul = Camera.main.pixelHeight - bulletCountSize;
-        GUI.Label(new Rect(posX, posY, size, size), "+");
-        GUI.Label(new Rect(posXBul, posYBul, bulletCountSize * 2, bulletCountSize * 2), info);
     }
 }

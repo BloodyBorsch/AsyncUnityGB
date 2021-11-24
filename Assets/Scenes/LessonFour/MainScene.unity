@@ -442,13 +442,50 @@ PrefabInstance:
     - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
         type: 3}
       propertyPath: m_OnlineScene
-      value: 
+      value: Online
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
+        type: 3}
+      propertyPath: m_CustomConfig
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
         type: 3}
       propertyPath: m_OfflineScene
-      value: 
+      value: MainScene
       objectReference: {fileID: 0}
+    - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
+        type: 3}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 8180541001969760909, guid: 756e5a1a0a755044bb426be16689d822,
+        type: 3}
+    - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
+        type: 3}
+      propertyPath: m_UseSimulator
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
+        type: 3}
+      propertyPath: m_PlayerSpawnMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
+        type: 3}
+      propertyPath: m_Channels.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
+        type: 3}
+      propertyPath: m_Channels.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799779800557044443, guid: 7b67a1b806bcc0f4492b2a869b12888b,
+        type: 3}
+      propertyPath: m_SpawnPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7871621661799621662, guid: 4c6bb81cfd331e84b94a1ae40eb0c580,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b67a1b806bcc0f4492b2a869b12888b, type: 3}
 --- !u!1 &2132435236

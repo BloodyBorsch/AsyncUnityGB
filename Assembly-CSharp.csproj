@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\LessonThree\INetworkUser.cs" />
     <Compile Include="Assets\Scripts\LessonThree\PopUpMenu.cs" />
     <Compile Include="Assets\Scripts\LessonOne\ObjThreeLessonOne.cs" />
+    <Compile Include="Assets\Scripts\LessonFour\RayShooter.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\CoroutineExample.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\CustomYieldInstruction.cs" />
     <Compile Include="Assets\Scripts\LessonThree\InputClientNameUI.cs" />
@@ -63,10 +64,14 @@
     <Compile Include="Assets\Scripts\LessonThree\UIController.cs" />
     <Compile Include="Assets\Scripts\LessonThree\Server.cs" />
     <Compile Include="Assets\Scripts\LessonThree\ChatFieldUI.cs" />
+    <Compile Include="Assets\Scripts\LessonFour\PlayerCharacter.cs" />
+    <Compile Include="Assets\Scripts\LessonFour\Character.cs" />
     <Compile Include="Assets\Scripts\LessonTwo\Examples02\GravitationJob.cs" />
     <Compile Include="Assets\Scripts\LessonTwo\PositionsAndVelocities.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\WaitForMouseDown.cs" />
+    <Compile Include="Assets\Scripts\LessonFour\FireAction.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\SomePopup.cs" />
+    <Compile Include="Assets\Scripts\LessonFour\MouseLook.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\AsyncExample.cs" />
     <Compile Include="Assets\Scripts\LessonTwo\ObjOneLessonTwo.cs" />
     <Compile Include="Assets\Scripts\LessonTwo\Examples02\Galaxy.cs" />
@@ -76,14 +81,10 @@
     <Compile Include="Assets\Scripts\LessonOne\Unit.cs" />
     <Compile Include="Assets\Scripts\LessonTwo\RecalculateJob.cs" />
     <Compile Include="Assets\Scripts\LessonOne\UnitManager.cs" />
+    <Compile Include="Assets\Scripts\LessonFour\Player.cs" />
     <Compile Include="Assets\Scripts\LessonOne\ObjTwoLessonOne.cs" />
     <Compile Include="Assets\Scripts\LessonThree\Client.cs" />
-    <Compile Include="Assets\Scripts\LessonFour\RayShooter.cs" />
-    <Compile Include="Assets\Scripts\LessonFour\Player.cs" />
-    <Compile Include="Assets\Scripts\LessonFour\Character.cs" />
-    <Compile Include="Assets\Scripts\LessonFour\FireAction.cs" />
-    <Compile Include="Assets\Scripts\LessonFour\MouseLook.cs" />
-    <Compile Include="Assets\Scripts\LessonFour\PlayerCharacter.cs" />
+    <Compile Include="Assets\Scripts\LessonFour\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -682,6 +683,9 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -706,17 +710,14 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.multiplayer-weaver.Editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-hlapi.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>Library\ScriptAssemblies\com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

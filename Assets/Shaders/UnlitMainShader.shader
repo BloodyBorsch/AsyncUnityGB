@@ -43,7 +43,7 @@ Shader "Unlit/UnlitMainShader"
 			v2f vert(appdata_full v)
 			{
 				v2f result;
-				v.vertex.xyz -= v.normal * _Height * v.texcoord.x * v.texcoord.x;
+				v.vertex.xyz -= v.normal * _Height * (v.texcoord.x - 0.5) * (v.texcoord.x - 0.5);
 
 				result.vertex = UnityObjectToClipPos(v.vertex);
 				result.uv = TRANSFORM_TEX(v.texcoord, _Tex1);

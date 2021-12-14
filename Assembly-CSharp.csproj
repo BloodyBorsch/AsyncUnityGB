@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\LessonThree\INetworkUser.cs" />
     <Compile Include="Assets\Scripts\LessonThree\PopUpMenu.cs" />
     <Compile Include="Assets\Scripts\LessonOne\ObjThreeLessonOne.cs" />
+    <Compile Include="Assets\Scripts\LessonSix\ShaderScript.cs" />
     <Compile Include="Assets\Scripts\LessonFour\RayShooter.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\CoroutineExample.cs" />
     <Compile Include="Assets\Scripts\LessonOne\Examples01\CustomYieldInstruction.cs" />
@@ -85,15 +86,18 @@
     <Compile Include="Assets\Scripts\LessonFour\Player.cs" />
     <Compile Include="Assets\Scripts\LessonOne\ObjTwoLessonOne.cs" />
     <Compile Include="Assets\Scripts\LessonThree\Client.cs" />
-    <Compile Include="Assets\Scripts\LessonSix\ShaderScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\Shaders\StencilSurfaceShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Shaders\LambertEmissionShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Shaders\PlanetShader 1.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Shaders\Simple.shader" />
     <None Include="Assets\Shaders\UnlitMainShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
@@ -109,6 +113,8 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Shaders\StencilHole.shader" />
+    <None Include="Assets\Shaders\PlanetShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>

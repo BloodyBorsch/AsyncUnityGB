@@ -9,7 +9,7 @@ Shader "Unlit/UnlitMainShader"
 	_Height("Height", Range(0,20)) = 0.5
 	}
 
-	SubShader
+		SubShader
 	{
 		Tags { "RenderType" = "Opaque" } // тег, означающий, что шейдер непрозрачный
 		LOD 100 // минимальный уровень детализации
@@ -31,7 +31,7 @@ Shader "Unlit/UnlitMainShader"
 			float _Height; // сила изгиба
 
 			// структура, которая помогает преобразовать данные вершины в данные фрагмента
-			
+
 			struct v2f
 			{
 				float2 uv : TEXCOORD0; // UV-координаты вершины
@@ -46,12 +46,12 @@ Shader "Unlit/UnlitMainShader"
 				v.vertex.xyz -= v.normal * _Height * v.texcoord.x * v.texcoord.x;
 
 				result.vertex = UnityObjectToClipPos(v.vertex);
-				result.uv = TRANSFORM_TEX(v.texcoord, _Tex1);				
+				result.uv = TRANSFORM_TEX(v.texcoord, _Tex1);
 				return result;
 			}
 
 			//здесь происходит обработка пикселей, цвет пикселей умножается на цвет материала
-			
+
 			fixed4 frag(v2f i) : SV_Target
 			{
 				fixed4 color;

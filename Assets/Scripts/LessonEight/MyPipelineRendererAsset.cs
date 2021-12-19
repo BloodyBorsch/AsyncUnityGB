@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.Rendering;
 using UnityEngine;
 
-public class MyPipelineRendererAsset : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+namespace LessonEight
+{
+    [CreateAssetMenu(fileName = nameof(MyPipelineRendererAsset), menuName = "Rendering/MyPipelineRenderAsset")]
+    public class MyPipelineRendererAsset : RenderPipelineAsset
     {
-        
+        protected override RenderPipeline CreatePipeline()
+        {
+            var renderer = new MyPipelineRenderer();
+            renderer.GetCameraRenderer();
+            return renderer;
+        }
     }
 }

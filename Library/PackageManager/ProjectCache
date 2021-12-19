@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637753398211615416
-    m_Hash: 2147007836
+      ticks: 637755016040442359
+    m_Hash: 2101368003
   m_LockFileStatus:
     m_FilePath: C:/Projects/AsyncUnityGB/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637753398211705420
-    m_Hash: 3814182434
+      ticks: 637755016040452354
+    m_Hash: 2327973632
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -87,6 +87,13 @@ m_PackageAssets:
         - 2.1.0-preview.5
         - 2.1.0-preview.6
         compatible:
+        - 1.11.2
+        - 1.12.5
+        - 1.13.5
+        - 1.14.1
+        - 1.14.4
+        - 1.14.7
+        - 1.15.1
         - 1.15.4
         - 1.15.7
         - 2.0.0-preview.6
@@ -99,7 +106,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.15.7
+        verified: 1.11.2
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
@@ -548,11 +555,10 @@ m_PackageAssets:
         - 10.5.1
         - 10.6.0
         - 10.7.0
-        - 10.8.0
         compatible:
+        - 10.6.0
         - 10.7.0
-        - 10.8.0
-        verified: 10.7.0
+        verified: 10.6.0
       dependencies:
       - name: com.unity.mathematics
         version: 1.1.0
@@ -3084,11 +3090,10 @@ m_PackageAssets:
         - 10.5.1
         - 10.6.0
         - 10.7.0
-        - 10.8.0
         compatible:
+        - 10.6.0
         - 10.7.0
-        - 10.8.0
-        verified: 10.7.0
+        verified: 10.6.0
       dependencies:
       - name: com.unity.ugui
         version: 1.0.0
@@ -3244,11 +3249,10 @@ m_PackageAssets:
         - 10.5.1
         - 10.6.0
         - 10.7.0
-        - 10.8.0
         compatible:
+        - 10.6.0
         - 10.7.0
-        - 10.8.0
-        verified: 10.7.0
+        verified: 10.6.0
       dependencies:
       - name: com.unity.render-pipelines.core
         version: 10.7.0
@@ -3369,7 +3373,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: library
       description: 'Newtonsoft Json for use in Unity projects and Unity packages.
         Currently synced to version 12.0.2.
 
@@ -3384,30 +3388,10 @@ m_PackageAssets:
       errors: []
       versions:
         all:
-        - 1.0.0-preview.2
-        - 1.0.0-preview.3
-        - 1.0.0-preview.4
-        - 1.0.1-preview.1
-        - 1.1.2
-        - 2.0.0-preview
-        - 2.0.0-preview.1
-        - 2.0.0-preview.2
         - 2.0.0
-        - 2.0.1-preview.1
-        - 2.0.2
         compatible:
-        - 1.0.0-preview.2
-        - 1.0.0-preview.3
-        - 1.0.0-preview.4
-        - 1.0.1-preview.1
-        - 1.1.2
-        - 2.0.0-preview
-        - 2.0.0-preview.1
-        - 2.0.0-preview.2
         - 2.0.0
-        - 2.0.1-preview.1
-        - 2.0.2
-        verified: 2.0.2
+        verified: 2.0.0
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -3423,7 +3407,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637237898320000000
+      datePublishedTicks: 0
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -3456,20 +3440,8 @@ m_PackageAssets:
       versions:
         all:
         - 1.0.1
-        - 1.1.0-pre.7
-        - 1.1.0-pre.8
-        - 1.1.0-pre.9
-        - 1.1.0-pre.10
-        - 1.1.0-pre.11
-        - 1.1.0-pre.41
         compatible:
         - 1.0.1
-        - 1.1.0-pre.7
-        - 1.1.0-pre.8
-        - 1.1.0-pre.9
-        - 1.1.0-pre.10
-        - 1.1.0-pre.11
-        - 1.1.0-pre.41
         verified: 1.0.1
       dependencies:
       - name: com.unity.modules.unitywebrequest
@@ -3490,7 +3462,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637604883250000000
+      datePublishedTicks: 0
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -3519,9 +3491,37 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 4.0.0-preview
+        - 4.0.0
+        - 4.0.7-preview
+        - 4.0.7
+        - 4.0.8-preview
+        - 4.0.9
+        - 4.1.0-preview
+        - 4.1.0
+        - 4.2.0
+        - 4.3.0
+        - 4.3.1
         - 4.3.2
+        - 4.6.0-preview
+        - 4.7.0-preview
+        - 4.9.1
         compatible:
+        - 4.0.0-preview
+        - 4.0.0
+        - 4.0.7-preview
+        - 4.0.7
+        - 4.0.8-preview
+        - 4.0.9
+        - 4.1.0-preview
+        - 4.1.0
+        - 4.2.0
+        - 4.3.0
+        - 4.3.1
         - 4.3.2
+        - 4.6.0-preview
+        - 4.7.0-preview
+        - 4.9.1
         verified: 4.3.2
       dependencies: []
       resolvedDependencies: []
@@ -3540,7 +3540,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637509898070000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -3551,4 +3551,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: C:/Projects/AsyncUnityGB/Packages
-m_EditorVersion: 2020.3.24f1 (79c78de19888)
+m_EditorVersion: 2020.3.20f1 (41c4e627c95f)

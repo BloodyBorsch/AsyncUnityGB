@@ -1,12 +1,29 @@
-using UnityEngine.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
-[CreateAssetMenu(menuName = "Rendering/SpaceRunPipelineRenderAsset")]
-public class MyPipelineRenderer : RenderPipelineAsset
+namespace LessonEight
 {
-    protected override RenderPipeline CreatePipeline()
+    public class MyPipelineRenderer : RenderPipeline
     {
-        throw new System.NotImplementedException();
+        private CameraRender _cameraRenderer;
+
+        public void GetCameraRenderer()
+        {
+            _cameraRenderer = new CameraRender();
+        }
+
+        protected override void Render(ScriptableRenderContext context, Camera[] cameras)
+        {            
+            CamerasRenderer(context, cameras);
+        }
+
+        private void CamerasRenderer(ScriptableRenderContext context, Camera[] cameras)
+        {
+            foreach(var camera in cameras)
+            {
+                _cameraRenderer.Render(context, camera);
+            }
+        }
     }
 }

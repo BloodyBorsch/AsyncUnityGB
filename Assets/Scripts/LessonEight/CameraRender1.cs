@@ -8,6 +8,7 @@ namespace LessonEight
     partial class CameraRender
     {
         partial void DrawUnsupportedShaders();
+        partial void ShowUIInScene();
 
 #if UNITY_EDITOR
 
@@ -22,6 +23,14 @@ namespace LessonEight
         };
 
         private static Material _errorMaterial = new Material(Shader.Find("Hidden/InternalErrorShader"));
+
+        partial void ShowUIInScene()
+        {            
+            if (_camera.cameraType == CameraType.SceneView)
+            {
+                ScriptableRenderContext.EmitWorldGeometryForSceneView(_camera);
+            }
+        }
 
         partial void DrawUnsupportedShaders()
         {

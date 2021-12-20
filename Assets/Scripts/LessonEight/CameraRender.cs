@@ -25,6 +25,8 @@ namespace LessonEight
             _context = context;
             _camera = camera;
 
+            ShowUIInScene();
+
             if (!Cull(out var parameters))
             {
                 return;
@@ -76,7 +78,7 @@ namespace LessonEight
         private void DrawVisible()
         {
             var drawingSettings = CreateDrawingSettings(drawingShaderTagIds, SortingCriteria.CommonOpaque, out var sortingSettings);
-            var filteringSettings = new FilteringSettings(RenderQueueRange.all);
+            var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
             _context.DrawRenderers(_cullingResults, ref drawingSettings, ref filteringSettings);
             _context.DrawSkybox(_camera);
 

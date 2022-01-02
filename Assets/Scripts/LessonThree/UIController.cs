@@ -17,7 +17,7 @@ namespace LessonThree
         [SerializeField] private Button _closeApplication;
 
         [SerializeField] private TMP_InputField _msgInputField;
-        [SerializeField] private PopUpMenu _nameMenu;
+        [SerializeField] private PopUpMenuLessonThree _nameMenu;
         [SerializeField] private ChatFieldUI _textField;
 
         [SerializeField] private Server _server;
